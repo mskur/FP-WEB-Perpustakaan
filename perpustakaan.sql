@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2022 at 06:57 AM
+-- Generation Time: May 17, 2022 at 09:10 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -34,17 +34,16 @@ CREATE TABLE `buku` (
   `penulis` varchar(100) NOT NULL,
   `rak` varchar(100) NOT NULL,
   `genre` varchar(100) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `qrcode` varchar(200) NOT NULL
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `judul`, `tahun`, `penulis`, `rak`, `genre`, `status`, `qrcode`) VALUES
-('BOOK001', 'Anthem', 1, '1', '1', '1', 'Tersedia', 'qrcode'),
-('BOOK002', '2', 2, '2', '2', '2', 'Tersedia', 'qrcode');
+INSERT INTO `buku` (`id_buku`, `judul`, `tahun`, `penulis`, `rak`, `genre`, `status`) VALUES
+('BOOK001', 'Ayah', 2015, 'Andrea Hirata', '3', 'Sastra', 'Tersedia'),
+('BOOK002', 'Naruto', 1999, 'Masashi Kishimoto', '4', 'Lainnya', 'Tersedia');
 
 --
 -- Indexes for dumped tables
