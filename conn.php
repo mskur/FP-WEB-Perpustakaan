@@ -32,9 +32,8 @@ function tambahBuku($data){
     $rak = htmlspecialchars($data["rak"]);
     $genre = htmlspecialchars($data["genre"]);
     $status = htmlspecialchars($data["status"]);
-    $qrcode = htmlspecialchars($data["qrcode"]);
 
-    $query = $conn->prepare("INSERT INTO buku VALUES (:id_buku, :judul, :tahun, :penulis, :rak, :genre, :status, :qrcode)");
+    $query = $conn->prepare("INSERT INTO buku VALUES (:id_buku, :judul, :tahun, :penulis, :rak, :genre, :status)");
     $query->bindParam(":id_buku", $id_buku);
     $query->bindParam(":judul", $judul);
     $query->bindParam(":tahun", $tahun);
@@ -42,7 +41,6 @@ function tambahBuku($data){
     $query->bindParam(":rak", $rak);
     $query->bindParam(":genre", $genre);
     $query->bindParam(":status", $status);
-    $query->bindParam(":qrcode", $qrcode);
     return $query->execute();
 }
 
@@ -62,9 +60,8 @@ function updateBuku($data){
     $rak = htmlspecialchars($data["rak"]);
     $genre = htmlspecialchars($data["genre"]);
     $status = htmlspecialchars($data["status"]);
-    $qrcode = htmlspecialchars($data["qrcode"]);
 
-    $query = $conn->prepare("UPDATE buku SET judul = :judul, tahun = :tahun, penulis = :penulis, rak = :rak, genre = :genre, status = :status, qrcode = :qrcode WHERE id_buku = :id_buku");
+    $query = $conn->prepare("UPDATE buku SET judul = :judul, tahun = :tahun, penulis = :penulis, rak = :rak, genre = :genre, status = :status WHERE id_buku = :id_buku");
     $query->bindParam(":id_buku", $id_buku);
     $query->bindParam(":judul", $judul);
     $query->bindParam(":tahun", $tahun);
@@ -72,7 +69,6 @@ function updateBuku($data){
     $query->bindParam(":rak", $rak);
     $query->bindParam(":genre", $genre);
     $query->bindParam(":status", $status);
-    $query->bindParam(":qrcode", $qrcode);
     return $query->execute();
 }
 
