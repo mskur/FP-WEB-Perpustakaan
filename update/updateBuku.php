@@ -7,6 +7,8 @@ $buku = $conn->prepare("SELECT * FROM buku WHERE id_buku = :id_buku");
 $buku->bindParam(":id_buku", $id_buku);
 $buku->execute();
 
+$genre = ["Petualangan", "Fantasi", "Fiksi", "Sejarah", "Sastra", "Humor", "Horror", "Teknologi", "Romansa", "Anak", "Misteri", "Lainnya"];
+
 if(isset($_POST["submit"])){
     if(updateBuku($_POST) > 0){
         echo "
@@ -71,10 +73,16 @@ if(isset($_POST["submit"])){
                                 <label style="margin-right: 22px;">Rak Buku</label>
                                 <input class="kolom" type="number" min="1" max="10" name="rak" required value="<?= $bk["rak"]; ?>"><br>
                                 <label style="margin-right: 45px;">Genre</label>
-                                <input class="kolom" type="text" name="genre" required value="<?= $bk["genre"]; ?>"><br>
-                                <label style="margin-right: 45px;">Status</label>
-                                <input class="kolom" type="text" name="status" value="<?= $bk["status"]; ?>" readonly><br>
-                                <input type="hidden" value="<?= $bk["qrcode"]; ?>" name="qrcode">
+                                <select class="kolom" name="genre" required>
+                                    <option value="">Pilih Genre</option>
+                                    <?php foreach($genre as $g) : ?>
+                                        <?php if($bk["genre"] == $g) : ?>
+                                            <option value="<?= $g ?>" selected><?= $g ?></option>
+                                        <?php else : ?>
+                                            <option value="<?= $g ?>"><?= $g ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?> <br><br>
+                                <input type="hidden" name="status" value="<?= $bk["status"]; ?>"><br>
                                 <center>
                                     <input class="button" type="submit" name="submit" value="Update">
                                 </center>
