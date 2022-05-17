@@ -10,6 +10,8 @@ $urutan++;
 $huruf = "BOOK";
 $kodeBaru = $huruf . sprintf("%03s", $urutan);
 
+$genre = ["Petualangan", "Fantasi", "Fiksi", "Sejarah", "Sastra", "Humor", "Horror", "Teknologi", "Romansa", "Anak", "Misteri", "Lainnya"];
+
 if(isset($_POST["submit"])){
     if(tambahBuku($_POST) > 0){
         echo "
@@ -73,10 +75,12 @@ if(isset($_POST["submit"])){
                             <label style="margin-right: 22px;">Rak Buku</label>
                             <input class="kolom" type="number" min="1" max="10" name="rak" required><br>
                             <label style="margin-right: 45px;">Genre</label>
-                            <input class="kolom" type="text" name="genre" required><br>
-                            <label style="margin-right: 45px;">Status</label>
-                            <input class="kolom" type="text" name="status" value="Tersedia" readonly><br>
-                            <input type="hidden" value="qrcode" name="qrcode">
+                            <select class="kolom" name="genre" required>
+                                <option value="">Pilih Genre</option>
+                                <?php foreach($genre as $g) : ?>
+                                    <option value="<?= $g ?>"><?= $g ?></option>
+                                <?php endforeach; ?> <br><br>
+                            <input type="hidden" name="status" value="Tersedia"><br>
                             <center>
                                 <input class="button" type="submit" name="submit" value="Tambah">
                             </center>
