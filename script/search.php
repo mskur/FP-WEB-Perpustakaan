@@ -10,6 +10,7 @@ $buku = query("SELECT * FROM buku
                         rak LIKE '%$keyword%' OR
                         tahun LIKE '%$keyword%' OR
                         id_buku LIKE '%$keyword%' OR
+                        status LIKE '%$keyword%' OR
                         genre LIKE '%$keyword%'");
 
 ?>
@@ -39,11 +40,11 @@ $buku = query("SELECT * FROM buku
             <tr>
                 <th><?= $bk["id_buku"]; ?></th>
                 <td><?= $bk["judul"]; ?></td>
-                <td class="atur"><?= $bk["tahun"]; ?></td>
+                <th><?= $bk["tahun"]; ?></th>
                 <td><?= $bk["penulis"]; ?></td>
-                <td class="atur"><?= $bk["rak"]; ?></td>
+                <th><?= $bk["rak"]; ?></th>
                 <td><?= $bk["genre"]; ?></td>
-                <td class="atur"><?= $bk["status"]; ?></td>
+                <th><?= $bk["status"]; ?></th>
                 <th>
                     <a href="../update/updateBuku.php?id=<?= $bk["id_buku"]; ?>">
                         <img src="../icon/update.png" style="text-align: center;" alt="Qries" width="30">
