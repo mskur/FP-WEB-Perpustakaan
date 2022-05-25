@@ -62,17 +62,17 @@ if(isset($_POST["submit"])){
                     <div class="add-brg">
                         <form action="" method="POST">
                             <?php while ($bk = $buku->fetch(PDO::FETCH_ASSOC)) :  ?>
-                                <label style="margin-right: 10px;">Kode Buku</label>
+                                <label>Kode Buku</label><br>
                                 <input class="kolom" type="text" name="id_buku" value="<?= $bk["id_buku"]; ?>" required readonly><br>
-                                <label style="margin-right: 10px;">Judul Buku</label>
+                                <label>Judul Buku</label><br>
                                 <input class="kolom" type="text" name="judul" required value="<?= $bk["judul"]; ?>"><br>
-                                <label style="margin-right: 45px;">Tahun</label>
+                                <label>Tahun</label><br>
                                 <input class="kolom" type="text" name="tahun" required value="<?= $bk["tahun"]; ?>"><br>
-                                <label style="margin-right: 40px;">Penulis</label>
+                                <label>Penulis</label><br>
                                 <input class="kolom" type="text" name="penulis" required value="<?= $bk["penulis"]; ?>"><br>
-                                <label style="margin-right: 22px;">Rak Buku</label>
+                                <label>Rak Buku</label><br>
                                 <input class="kolom" type="number" min="1" max="10" name="rak" required value="<?= $bk["rak"]; ?>"><br>
-                                <label style="margin-right: 45px;">Genre</label>
+                                <label>Genre</label><br>
                                 <select class="kolom" name="genre" required>
                                     <option value="">Pilih Genre</option>
                                     <?php foreach($genre as $g) : ?>
