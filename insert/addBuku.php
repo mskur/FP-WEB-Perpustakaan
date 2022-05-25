@@ -64,17 +64,17 @@ if(isset($_POST["submit"])){
                 <center>
                     <div class="add-brg">
                         <form action="" method="POST">
-                            <label style="margin-right: 10px;">Kode Buku</label>
+                            <label>Kode Buku</label><br>
                             <input class="kolom" type="text" name="id_buku" value="<?= $kodeBaru ?>" required readonly><br>
-                            <label style="margin-right: 10px;">Judul Buku</label>
+                            <label>Judul Buku</label><br>
                             <input class="kolom" type="text" name="judul" required><br>
-                            <label style="margin-right: 45px;">Tahun</label>
+                            <label>Tahun</label><br>
                             <input class="kolom" type="text" name="tahun" required><br>
-                            <label style="margin-right: 40px;">Penulis</label>
+                            <label>Penulis</label><br>
                             <input class="kolom" type="text" name="penulis" required><br>
-                            <label style="margin-right: 22px;">Rak Buku</label>
+                            <label>Rak Buku</label><br>
                             <input class="kolom" type="number" min="1" max="12" name="rak" required><br>
-                            <label style="margin-right: 45px;">Genre</label>
+                            <label>Genre</label><br>
                             <select class="kolom" name="genre" required>
                                 <option value="">Pilih Genre</option>
                                 <?php foreach($genre as $g) : ?>
