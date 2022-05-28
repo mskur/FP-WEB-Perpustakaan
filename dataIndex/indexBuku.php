@@ -2,7 +2,7 @@
 
 require '../conn.php';
 $buku = query("SELECT * FROM buku");
-
+$totalBuku = count($buku);
 
 
 ?>
@@ -40,7 +40,7 @@ $buku = query("SELECT * FROM buku");
                     <form action="#" method="POST">
                         <input class="kolomm" type="text" id="keyword" placeholder="Cari Sesuatu">
                     </form>
-                
+                <h4>Jumlah Buku Perpustakaan : <?= $totalBuku; ?></h4>
                 <div id="tabelData">
                     <table border="2" cellpadding="3" cellspacing="1">
                         <thead>
@@ -66,7 +66,13 @@ $buku = query("SELECT * FROM buku");
                                 <td><?= $bk["penulis"]; ?></td>
                                 <th><?= $bk["rak"]; ?></th>
                                 <td><?= $bk["genre"]; ?></td>
-                                <th><?= $bk["status"]; ?></th>
+                                <?php if($bk['status'] != "Tersedia") : ?>
+                                    <th style="color : red;">
+                                <?php else: ?>
+                                    <th>
+                                <?php endif; ?>
+                                    <?= $bk["status"]; ?>
+                                </th>
                                 <th>
                                     <img src="../img-barcode/<?= $bk["barcode"];?>">
                                     <a href="printBarcode.php?kode=<?= $bk["barcode"]; ?>">
@@ -74,14 +80,22 @@ $buku = query("SELECT * FROM buku");
                                     </a>
                                 </th>
                                 <th>
-                                    <a href="../update/updateBuku.php?id=<?= $bk["id_buku"]; ?>">
-                                        <img src="../icon/update.png" style="text-align: center;" alt="Qries" width="30">
-                                    </a>
+                                    <?php if($bk['status'] != "Tersedia") : ?>
+                                        <img src="../icon/prohibition.png" style="text-align: center;" alt="Qries" width="30">
+                                    <?php else : ?>
+                                        <a href="../update/updateBuku.php?id=<?= $bk["id_buku"]; ?>">
+                                            <img src="../icon/update.png" style="text-align: center;" alt="Qries" width="30">
+                                        </a>
+                                    <?php endif; ?>
                                 </th>
                                 <th>
-                                    <a href="../delete/deleteBuku.php?id=<?= $bk["id_buku"]; ?>">
-                                        <img src="../icon/delete.png" style="text-align: center;" alt="Qries" width="30">
-                                    </a>
+                                    <?php if($bk['status'] != "Tersedia") : ?>
+                                        <img src="../icon/prohibition.png" style="text-align: center;" alt="Qries" width="30">
+                                    <?php else : ?>
+                                        <a href="../delete/deleteBuku.php?id=<?= $bk["id_buku"]; ?>" onclick="return confirm('Yakin Ingin Menghapus Buku Dengan Kode <?= $bk["id_buku"]; ?>?');">
+                                            <img src="../icon/delete.png" style="text-align: center;" alt="Qries" width="30">
+                                        </a>
+                                    <?php endif; ?>
                                 </th>
                             </tr>
                             <?php endforeach; ?>
